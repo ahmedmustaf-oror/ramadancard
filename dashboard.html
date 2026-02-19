@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vodafone Cards - Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body class="dashboard-page">
+    <!-- شريط العلوي -->
+    <div class="top-bar">
+        <div class="time">10:17:54</div>
+        <div class="user-info">
+            <i class="fas fa-user-circle"></i>
+            <span id="userPhone">01021520331</span>
+        </div>
+        <a href="index.html" class="logout-btn">
+            <i class="fas fa-sign-out-alt"></i>
+            <span>خروج</span>
+        </a>
+    </div>
+    
+    <div class="dashboard-container">
+        <!-- البطاقة الرئيسية -->
+        <div class="main-card">
+            <div class="card-header">
+                <div class="vodafone-brand">
+                    <i class="fas fa-sim-card"></i>
+                    <span>Vodafone Cards</span>
+                </div>
+                <div class="card-stats">
+                    <div class="stat-item">
+                        <span class="stat-label">تم التفعيل</span>
+                        <span class="stat-value" id="activatedCount">0</span>
+                    </div>
+                    <div class="stat-divider"></div>
+                    <div class="stat-item">
+                        <span class="stat-label">إجمالي الكروت</span>
+                        <span class="stat-value" id="totalCards">50</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- اختيار طريقة الشحن -->
+            <div class="shipping-methods">
+                <h3>اختر طريقة الشحن</h3>
+                
+                <div class="methods-grid">
+                    <!-- يدوي -->
+                    <div class="method-card" id="manualMethod">
+                        <div class="method-icon">
+                            <i class="fas fa-hand-pointer"></i>
+                        </div>
+                        <div class="method-details">
+                            <h4>يدوي</h4>
+                            <p>شحن من الهاتف</p>
+                            <small>كود الشحن للطلب من هاتفك</small>
+                        </div>
+                        <div class="method-arrow">
+                            <i class="fas fa-chevron-left"></i>
+                        </div>
+                    </div>
+                    
+                    <!-- شحن مباشر -->
+                    <div class="method-card" id="directMethod">
+                        <div class="method-icon">
+                            <i class="fas fa-bolt"></i>
+                        </div>
+                        <div class="method-details">
+                            <h4>تقاضياني</h4>
+                            <p>شحن مباشر</p>
+                            <small>شحن تلقائي من الموقع</small>
+                        </div>
+                        <div class="method-arrow">
+                            <i class="fas fa-chevron-left"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- قسم الكروت (يدوي) -->
+        <div class="cards-section manual-section" id="manualSection" style="display: none;">
+            <div class="section-header">
+                <button class="back-btn" onclick="showMethods()">
+                    <i class="fas fa-arrow-right"></i>
+                    <span>رجوع</span>
+                </button>
+                <p>سيتم تفعيل الكارت تلقائياً عند الضغط على "شحن الكارت"</p>
+            </div>
+            
+            <div class="cards-list" id="manualCardsList">
+                <!-- هنا سيتم عرض الكروت -->
+            </div>
+        </div>
+        
+        <!-- قسم الكروت (شحن مباشر) -->
+        <div class="cards-section direct-section" id="directSection" style="display: none;">
+            <div class="section-header">
+                <button class="back-btn" onclick="showMethods()">
+                    <i class="fas fa-arrow-right"></i>
+                    <span>رجوع</span>
+                </button>
+                <p>اضغط على "شحن الكارت" ثم اطلب الكود من هاتفك</p>
+            </div>
+            
+            <div class="cards-list" id="directCardsList">
+                <!-- هنا سيتم عرض الكروت -->
+            </div>
+        </div>
+    </div>
+    
+    <!-- شاشة التحميل -->
+    <div id="loadingOverlay" class="loading-overlay" style="display: none;">
+        <div class="loading-spinner"></div>
+        <p>جاري تحميل الكروت...</p>
+    </div>
+    
+    <!-- رسائل التنبيه -->
+    <div id="toast" class="toast"></div>
+    
+    <script src="script.js"></script>
+</body>
+</html>
